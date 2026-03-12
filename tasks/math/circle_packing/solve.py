@@ -1,52 +1,78 @@
-"""Constructor-based circle packing baseline for 26 circles."""
+"""Fixed 26-circle packing with an asymmetric 7-row layout."""
 
 from __future__ import annotations
 
 import numpy as np
 
-N_CIRCLES = 26
+CENTERS = np.array(
+    [
+        [0.08397501850338361, 0.0839750185033775],
+        [0.5220992470976635, 0.0960744472718622],
+        [0.7069405707679728, 0.08890583268074276],
+        [0.2956682533586299, 0.13341475382252824],
+        [0.6256789884965128, 0.22129828854444436],
+        [0.8976879354978581, 0.10231206450214503],
+        [0.10280228545316908, 0.26980099971288685],
+        [0.4724049688394103, 0.285464675173698],
+        [0.778314183863876, 0.25218644924574973],
+        [0.10193061106505895, 0.47453204059458287],
+        [0.2852613395586706, 0.37383762718264574],
+        [0.46490476773479666, 0.4938878110400228],
+        [0.6448730045682302, 0.3870748214139121],
+        [0.9334330777016637, 0.26736477423932825],
+        [0.09795823549220861, 0.6743814118978281],
+        [0.2742811944385407, 0.5819188663799637],
+        [0.6649078810061031, 0.6081031929688473],
+        [0.8675753118390999, 0.4551423440094018],
+        [0.24969368951960774, 0.7553519025720177],
+        [0.44826672287977026, 0.728482563419202],
+        [0.883138847140928, 0.703941875564294],
+        [0.11413924057736653, 0.8858607594226325],
+        [0.3203556657585064, 0.9068567177261363],
+        [0.486913479942661, 0.9255407776370113],
+        [0.6879689006535897, 0.8642771139882132],
+        [0.9095564464335578, 0.9095564464335569],
+    ],
+    dtype=np.float64,
+)
 
-
-def construct_packing() -> tuple[np.ndarray, np.ndarray, float]:
-    centers = np.zeros((N_CIRCLES, 2), dtype=np.float64)
-
-    centers[0] = [0.5, 0.5]
-
-    for index in range(8):
-        angle = 2.0 * np.pi * index / 8.0
-        centers[index + 1] = [0.5 + 0.3 * np.cos(angle), 0.5 + 0.3 * np.sin(angle)]
-
-    for index in range(16):
-        angle = 2.0 * np.pi * index / 16.0
-        centers[index + 9] = [0.5 + 0.7 * np.cos(angle), 0.5 + 0.7 * np.sin(angle)]
-
-    centers = np.clip(centers, 0.01, 0.99)
-    radii = compute_max_radii(centers)
-    sum_radii = float(np.sum(radii))
-    return centers, radii, sum_radii
-
-
-def compute_max_radii(centers: np.ndarray) -> np.ndarray:
-    n_circles = centers.shape[0]
-    radii = np.ones(n_circles, dtype=np.float64)
-
-    for index, (x_coord, y_coord) in enumerate(centers):
-        radii[index] = min(x_coord, y_coord, 1.0 - x_coord, 1.0 - y_coord)
-
-    for left in range(n_circles):
-        for right in range(left + 1, n_circles):
-            distance = float(np.linalg.norm(centers[left] - centers[right]))
-            total_radius = radii[left] + radii[right]
-            if total_radius > distance:
-                scale = distance / total_radius
-                radii[left] *= scale
-                radii[right] *= scale
-
-    return radii
+RADII = np.array(
+    [
+        0.08397501850337785,
+        0.09607444727186264,
+        0.08890583268074381,
+        0.1334147538225289,
+        0.0664363931398246,
+        0.10231206450214271,
+        0.10280228545316611,
+        0.09972693095698609,
+        0.08929279916638969,
+        0.10193061106506014,
+        0.10723325030294512,
+        0.10883111031920978,
+        0.1004476058031019,
+        0.06656692229833922,
+        0.09795823549220703,
+        0.10113749066792992,
+        0.12148692802636048,
+        0.13242468816089872,
+        0.07402975353295507,
+        0.12635290780370592,
+        0.11686115285905922,
+        0.1141392405773638,
+        0.09314328227386535,
+        0.07445922236298917,
+        0.13572288601178817,
+        0.09044355356644221,
+    ],
+    dtype=np.float64,
+)
 
 
 def run_packing() -> tuple[np.ndarray, np.ndarray, float]:
-    return construct_packing()
+    centers = CENTERS.copy()
+    radii = RADII.copy()
+    return centers, radii, float(np.sum(radii))
 
 
 if __name__ == "__main__":

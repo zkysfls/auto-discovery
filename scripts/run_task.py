@@ -11,7 +11,7 @@ from typing import Any
 
 from _tasks import TaskConfig, git_commit_short, load_task_config, relative_to_repo
 
-RESULTS_HEADER = (
+RUN_HISTORY_HEADER = (
     "timestamp\tcommit\ttask\tobjective\tprimary_metric\tscore\tstatus\twall_seconds\tsolution\tnotes\n"
 )
 
@@ -44,9 +44,9 @@ def _append_result(
     wall_seconds: float,
     notes: str,
 ) -> None:
-    results_path = task.task_dir / "results.tsv"
+    results_path = task.task_dir / "run_history.tsv"
     if not results_path.exists():
-        results_path.write_text(RESULTS_HEADER)
+        results_path.write_text(RUN_HISTORY_HEADER)
 
     timestamp = datetime.now(timezone.utc).isoformat(timespec="seconds")
     row = [
@@ -83,8 +83,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Run one task evaluator against a solution file.")
     parser.add_argument("task", help="Task id like math/circle_packing or a unique leaf task name.")
     parser.add_argument("--solution", help="Override the solution file path relative to the task directory.")
-    parser.add_argument("--notes", default="", help="Short note to append to results.tsv.")
-    parser.add_argument("--no-log", action="store_true", help="Skip appending to results.tsv.")
+    parser.add_argument("--notes", default="", help="Short note to append to run_history.tsv.")
+    parser.add_argument("--no-log", action="store_true", help="Skip appending to run_history.tsv.")
     args = parser.parse_args()
 
     task = load_task_config(args.task)

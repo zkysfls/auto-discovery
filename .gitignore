@@ -1,7 +1,7 @@
 /references/
 /runs/
 /tasks/**/artifacts/
-/tasks/**/results.tsv
+/tasks/**/run_history.tsv
 /tasks/**/run.log
 
 __pycache__/

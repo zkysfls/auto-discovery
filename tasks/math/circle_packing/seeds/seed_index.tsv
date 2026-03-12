@@ -1,0 +1,2 @@
+seed_id	status	score	sum_radii	validity	commit	parent_seed	seed_path	strategy
+cp-baseline-ring	active	0.364236894496	0.959764216996	1	bfcaeb4	-	seeds/baseline_ring.py	center plus two ring baseline with greedy radius clipping

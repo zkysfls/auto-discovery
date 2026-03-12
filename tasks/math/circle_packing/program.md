@@ -31,6 +31,8 @@ Read:
 - `tasks/math/circle_packing/task.json`
 - `tasks/math/circle_packing/evaluator.py`
 - `tasks/math/circle_packing/program.md`
+- `tasks/math/circle_packing/seeds/seed_index.tsv`
+- any seed snapshots under `tasks/math/circle_packing/seeds/` that look relevant
 
 Modify:
 
@@ -44,6 +46,20 @@ Do not edit any other file unless the human explicitly changes the rule.
 - Judge changes only by verified evaluator output.
 - Do not change the evaluator, runner, or task metadata to manufacture a better score.
 
+## Seed portfolio
+
+This task may maintain several read-only seeds across runs.
+
+Use them like this:
+
+- read the seed archive for alternative construction families
+- combine ideas from multiple seeds mentally if useful
+- implement the actual experiment only in `solve.py`
+
+Do not edit the seed archive during a normal run.
+
+The seed archive is for cross-run diversity. The current run still has one mutable file.
+
 ## Run command
 
 After each candidate change, run:
@@ -52,7 +68,9 @@ After each candidate change, run:
 python scripts/run_task.py math/circle_packing --notes "<short experiment note>"
 ```
 
-This appends a row to `tasks/math/circle_packing/results.tsv`.
+This appends a row to `tasks/math/circle_packing/run_history.tsv`.
+
+`tasks/math/circle_packing/results.tsv` is the curated milestone table on the main branch and should keep both `score` and raw `sum_radii` for readability.
 
 Important printed fields:
 
@@ -148,6 +166,8 @@ Suggested loop:
 6. repeat
 
 For regressions, prefer reverting only the task file, not the whole branch state.
+
+If you discover a genuinely different strong construction family, note that in the commit message or run notes so it can be promoted to a new seed later.
 
 ## Experiment tactics
 

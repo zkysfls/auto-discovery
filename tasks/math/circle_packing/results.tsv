@@ -1,0 +1,4 @@
+timestamp	commit	status	score	sum_radii	validity	wall_seconds	notes
+2026-03-12T15:40:48-07:00	a425736	baseline	0.364236894496	0.959764216996	1	0.166	initial ring baseline on main
+2026-03-12T15:58:11-07:00	b9c881b	milestone	0.996625945587	2.62610936662	1	0.184	hardcoded 7-row packing from Codex worktree
+2026-03-12T16:00:07-07:00	0217f05	best	0.998227083189	2.6303283642	1	0.186	asymmetric improved packing verified from Codex worktree

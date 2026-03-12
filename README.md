@@ -20,6 +20,8 @@ tasks/
       program.md
       evaluator.py
       solve.py
+      seeds/
+        seed_index.tsv
 scripts/
   _tasks.py
   list_tasks.py
@@ -39,6 +41,8 @@ python scripts/spawn_agents.py math/circle_packing
 
 `spawn_agents.py` creates one git worktree per task and prints the Codex prompt to use in that worktree.
 
+`python scripts/run_task.py ...` appends raw local evaluations to `run_history.tsv`. Each task's tracked `results.tsv` is reserved for curated milestones that you want visible on GitHub, and can use task-specific human-friendly columns such as both normalized score and raw objective value.
+
 ## Task contract
 
 Each task directory contains:
@@ -47,6 +51,8 @@ Each task directory contains:
 - `program.md`: Codex instructions for the task
 - `evaluator.py`: fixed evaluator exposing `evaluate(program_path)`
 - `solve.py`: the file Codex is expected to improve
+
+Tasks may also keep a small read-only seed archive under `seeds/`. This supports multiple construction families across runs without letting one run edit the whole archive.
 
 The framework uses JSON instead of YAML for task metadata so the runner stays dependency-free on Python 3.10+.
 

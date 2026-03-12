@@ -82,12 +82,43 @@ Strong preference:
 
 - explicit geometric constructions
 - compact local heuristics inside `solve.py`
+- real algorithmic help when it genuinely improves the packing
 
 Avoid unless clearly necessary:
 
 - turning `solve.py` into a huge generic optimizer framework
 - adding randomness without a clear reason
 - changes that make the construction hard to understand while not improving the result
+
+## Allowed optimization methods
+
+You are allowed to use actual optimization ideas inside `solve.py` if they help.
+
+Examples:
+
+- small local search over circle centers
+- coordinate descent
+- deterministic hill climbing
+- low-dimensional parameter search
+- sequential linear programming style updates
+- lightweight numerical refinement after constructing a layout
+- helper functions that analyze overlaps, slack, or boundary pressure
+
+This is encouraged when it improves the verified evaluator result.
+
+## Forbidden shortcuts
+
+Do not try to improve the score by changing what is being measured.
+
+Not allowed:
+
+- editing `evaluator.py`
+- editing `task.json`
+- editing the runner or log files to fake a better score
+- returning a fake `reported_sum`
+- changing output shapes or APIs to bypass validation
+
+The only improvement that counts is a better verified result from the fixed evaluator.
 
 ## Keep / discard rule
 
@@ -128,6 +159,8 @@ Promising directions:
 - small local coordinate surgery on a hand-designed layout
 - improved radius assignment for a fixed center pattern
 - parameterized templates with a few interpretable geometric constants
+- hybrid construction plus numerical polishing
+- simple search procedures that adjust a compact set of geometry parameters
 
 Less promising directions:
 

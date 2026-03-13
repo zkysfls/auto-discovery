@@ -6,12 +6,13 @@
   "evaluator_file": "evaluator.py",
   "primary_metric": "combined_score",
   "display_metrics": [
+    "inverse_min_max_ratio",
     "min_max_ratio"
   ],
   "allowed_edit_paths": [
     "solve.py"
   ],
   "timeout_sec": 600,
-  "description": "Place 16 points in 2D to maximize the squared ratio of minimum to maximum pairwise distance.",
+  "description": "Place 16 points in 2D to maximize the squared ratio of minimum to maximum pairwise distance while also reporting the inverse metric used in external benchmark tables.",
   "source": "Imported from references/skydiscover/benchmarks/math/minimizing_max_min_dist/2"
 }

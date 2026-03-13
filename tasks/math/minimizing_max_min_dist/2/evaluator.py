@@ -39,7 +39,9 @@ def evaluate(program_path: str) -> dict[str, float | str]:
         min_distance = float(np.min(pairwise_distances))
         max_distance = float(np.max(pairwise_distances))
         min_max_ratio = (min_distance / max_distance) ** 2 if max_distance > 0 else 0.0
+        inverse_min_max_ratio = (max_distance / min_distance) ** 2 if min_distance > 0 else float("inf")
         return {
+            "inverse_min_max_ratio": float(inverse_min_max_ratio),
             "min_max_ratio": float(min_max_ratio),
             "combined_score": float(min_max_ratio / BENCHMARK),
             "eval_time": float(end_time - start_time),

@@ -1,2 +1,3 @@
 timestamp	commit	status	score	radii_sum	wall_seconds	notes
 2026-03-12T16:12:40-07:00	bootstrap	baseline	0	0	0.003	imported zero-radius baseline from SkyDiscover
+2026-03-12T17:08:09-07:00	4fa0a2b	best	1.00000404068	2.36584169299	0.003	tolerance-aware 21-circle packing promoted from Codex worktree

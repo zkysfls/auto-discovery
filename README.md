@@ -43,14 +43,15 @@ Below is the current comparison on tasks where `auto-discovery` already has prom
 - For `minimizing_max_min_dist/2` and `minimizing_max_min_dist/3`, the table uses the inverse metric `(d_max / d_min)^2`, so lower is better. This matches how LoongFlow reports these distance tasks.
 - `SkyDiscover` values below are the best published values across the AdaEvolve blog/paper and the EvoX paper for the overlapping tasks.
 - `-` means the cited published source set does not report that exact task/result pair.
+- Bold marks the numerically best shown value in each column. For rounded published entries, ties or very small gaps may be hidden by display precision.
 - This is a useful reference table, not a perfectly controlled apples-to-apples benchmark: the published systems use different backbones and reporting conventions, and some paper tables round values aggressively.
 
 | Method | Circle Packing Square `n=26` `↑` | Circle Packing Rectangle `n=21` `↑` | Heilbronn Triangle `n=11` `↑` | Inverse Max/Min Dist `n=16,d=2` `↓` | Inverse Max/Min Dist `n=14,d=3` `↓` |
 | --- | --- | --- | --- | --- | --- |
-| AlphaEvolve | `2.6358627564136983` | `2.3658321334167627` | `0.036529889880030156` | `12.88926611203463` | `4.165849767` |
+| AlphaEvolve | `2.6358627564136983` | `2.3658321334167627` | **`0.036529889880030156`** | `12.88926611203463` | `4.165849767` |
 | SkyDiscover (best published AdaEvolve/EvoX) | `2.63598308` | `2.36583237` | `0.036` | `-` | `4.16579879192` |
 | LoongFlow | `2.6359829624734026` | `2.365832229500823` | `0.0365298898793351` | `12.889243547212832` | `-` |
-| auto-discovery | `2.63598308911` | `2.36584169299` | `0.03652988988` | `12.8892299077` | `4.16578347458007` |
+| auto-discovery | **`2.63598308911`** | **`2.36584169299`** | **`0.036529889880030156`** | **`12.8892299077`** | **`4.16578347458007`** |
 
 Current task-local milestone files:
 

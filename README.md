@@ -20,6 +20,7 @@ Note on rigor:
 - External systems use different LLM backbones, search budgets, and reporting conventions.
 - Some published numbers are rounded aggressively, so tiny gaps or ties may be hidden by display precision.
 - Bold marks the numerically best shown value in that column.
+- For SkyDiscover, the `n=16,d=2` inverse-distance value comes from the EvoX paper, while the blog and AdaEvolve paper explicitly discuss the `n=14,d=3` case.
 
 Metric conventions:
 
@@ -30,7 +31,7 @@ Metric conventions:
 | Method | Circle Packing Square `n=26` `↑` | Circle Packing Rectangle `n=21` `↑` | Heilbronn Triangle `n=11` `↑` | Inverse Max/Min Dist `n=16,d=2` `↓` | Inverse Max/Min Dist `n=14,d=3` `↓` |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | AlphaEvolve | `2.6358627564136983` | `2.3658321334167627` | **`0.036529889880030156`** | `12.88926611203463` | `4.165849767` |
-| SkyDiscover (best published AdaEvolve/EvoX) | `2.63598308` | `2.36583237` | `0.036` | `-` | `4.16579879192` |
+| SkyDiscover (best published AdaEvolve/EvoX) | `2.63598308` | `2.36583237` | `0.036` | `12.89` | `4.16579879192` |
 | LoongFlow | `2.6359829624734026` | `2.365832229500823` | `0.0365298898793351` | `12.889243547212832` | `-` |
 | **auto-discovery** | **`2.63598308911`** | **`2.36584169299`** | **`0.036529889880030156`** | **`12.8892299077`** | **`4.16578347458007`** |
 

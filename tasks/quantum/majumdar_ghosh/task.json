@@ -1,0 +1,24 @@
+{
+  "name": "majumdar_ghosh",
+  "domain": "quantum",
+  "objective": "maximize",
+  "entry_file": "solve.py",
+  "evaluator_file": "evaluator.py",
+  "primary_metric": "score",
+  "display_metrics": [
+    "prefix_ok",
+    "avg_fid",
+    "success",
+    "fid_N0",
+    "fid_N1",
+    "fid_N2",
+    "fid_N3",
+    "fid_N4"
+  ],
+  "allowed_edit_paths": [
+    "solve.py"
+  ],
+  "timeout_sec": 600,
+  "description": "Design a photonic experiment meta-program that produces the Majumdar-Ghosh quantum state family for system sizes N=0..4.",
+  "source": "Adapted from llm-metadesign-quantum"
+}
